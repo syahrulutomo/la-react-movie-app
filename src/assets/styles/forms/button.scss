@@ -1,0 +1,43 @@
+.public-search-event-btn-container {
+  display: flex;
+  width: 100%;
+  margin-top: $size-space-3;
+
+  @media screen and (min-width: 768px) {
+    width: 15%;
+    margin-top: 0;
+  }
+
+  .public-search-event-btn {
+    flex-basis: 0;
+    flex-grow: 1;
+    height: 48px;
+    background-color: $color-white;
+    border: 1px solid $color-viridian;
+    color: $color-viridian;
+    fill: $color-viridian;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .15s;
+    -webkit-appearance: none;
+    border-radius: $default-radius;
+    box-sizing: border-box;
+    font-size: $font-size-small;
+    font-weight: $font-weight-regular;
+    line-height: $font-line-height-small;
+    outline: 0;
+    padding: $space-half $space;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none!important;
+
+    &:hover {
+      background-color: $color-viridian;
+      color: $color-white;
+    }
+  }
+}
+

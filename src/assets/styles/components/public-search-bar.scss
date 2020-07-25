@@ -1,0 +1,18 @@
+.public-search-bar {
+  max-width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-top: -170px !important;
+    display: flex;
+    background-color: $theme-ui-colors-white;
+    margin-top: 16px;
+    padding: 16px;
+    border-color: $theme-ui-colors-gray1;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.12);
+    border-radius: $space-half;
+  }
+}

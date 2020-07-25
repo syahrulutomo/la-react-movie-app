@@ -1,0 +1,123 @@
+.public-banner {
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1060px;
+
+  &:before {
+    content: "";
+    position: fixed;
+    top: 240px;
+    left: -110px;
+    width: 200px;
+    height: 210px;
+    border-radius: 50% 70% 50% 40%;
+    background-color: $color-beach;
+    opacity: .4;
+    z-index: -5;
+  }
+
+  &:after {
+    content: "";
+    position: fixed;
+    top: 40px;
+    right: -300px;
+    width: 550px;
+    height: 600px;
+    border-radius: 50%;
+    background-color: $color-peach;
+    opacity: .07;
+    z-index: -5;
+  }
+
+  &--container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .hero-title-container {
+      width: 300px;
+
+      @media screen and (min-width: 576px) {
+        width: 390px;
+      }
+
+      .hero-title {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        font-weight: 900;
+        line-height: 1.24;
+        font-size: 44px;
+        color: var(--theme-ui-colors-gray7,#212121);
+        font-size: 32px;
+        line-height: 1.24;
+        margin-bottom: 16px;
+        padding-top: 8px;
+
+        @media screen and (min-width: 576px) {
+          font-size: 44px;
+          line-height: 1.24;
+          padding-top: 8px;
+        }
+      }
+
+
+      .join-btn {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        display: inline-block;
+        text-align: center;
+        line-height: inherit;
+        text-decoration: none;
+        font-size: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: $theme-ui-colors-white;
+        border: 0;
+        border-radius: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: var(--theme-ui-colors-white,#FFFFFF);
+        fill: var(--theme-ui-colors-white,#FFFFFF);
+        background-color: $theme-ui-colors-peach;
+        border-color: $theme-ui-colors-peach;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        margin-top: 24px;
+        font-weight: 400;
+        letter-spacing: 1px;
+
+        &:hover {
+          background-color: #f77070;
+          border-color: #f77070;
+        }
+      }
+    }
+
+    .hero-image-container {
+      position: absolute;
+      margin-left: 20px;
+      margin-top: 245px;
+      width: 100%;
+      box-sizing: border-box;
+
+      @media screen and (min-width: 576px) {
+        margin-left: 30%;
+        margin-top: 200px;
+        width: 100%;
+      }
+
+      @media screen and (min-width: 768px) {
+        margin-left: 350px;
+        margin-top: 0;
+        width: 60%;
+      }
+    }
+  }
+}
