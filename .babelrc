@@ -1,38 +1,20 @@
 {
   "presets": [
     [
-<<<<<<< HEAD
       "@babel/env",
       {
         "targets": {
           "browsers": ["Chrome >= 59"],
-=======
-      "babel-env",
-      {
-        "targets": {
-          "browser": ["Crome >= 59"],
->>>>>>> 3fa2288a76e3a222d2264d6fa894c37fc0c9312b
           "node": "current"
         }
       }
     ],
-<<<<<<< HEAD
     "@babel/react"
-=======
-    "babel-react"
->>>>>>> 3fa2288a76e3a222d2264d6fa894c37fc0c9312b
   ],
   "plugins": [
     "@babel/plugin-proposal-nullish-coalescing-operator",
     "@babel/plugin-proposal-optional-chaining",
-<<<<<<< HEAD
     "@babel/plugin-proposal-class-properties",
     "@babel/proposal-object-rest-spread"
   ]
 }
-=======
-    "@babel/plugin-proposal-class-propesties",
-    "@babel/proposal-object-rest-spread"
-  ]
-}
->>>>>>> 3fa2288a76e3a222d2264d6fa894c37fc0c9312b

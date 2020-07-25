@@ -1,5 +1,4 @@
 const path = require('path');
-<<<<<<< HEAD
 
 module.exports = {
   parser: 'babel-eslint',
@@ -10,23 +9,6 @@ module.exports = {
     jest: true,
   },
   plugins: ['react-hooks'],
-=======
-const bableEslint = require('babel-eslint');
-
-module.exports = {
-  parser: bableEslint,
-  env: {
-    browser: true,
-    es2020: true,
-  },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
-  plugins: [
-    'react',
-  ],
->>>>>>> 3fa2288a76e3a222d2264d6fa894c37fc0c9312b
   rules: {
     'linebreak-style': 0,
     'no-else-return': 0,
@@ -93,10 +75,7 @@ module.exports = {
         ],
       },
     ],
-<<<<<<< HEAD
     'react-hooks/rules-of-hooks': 'error',
-=======
->>>>>>> 3fa2288a76e3a222d2264d6fa894c37fc0c9312b
   },
   globals: {
     window: true,

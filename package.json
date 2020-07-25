@@ -2,13 +2,27 @@
   "name": "react-event-booking",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "Syahrul Utomo",
   "license": "ISC",
   "description": "A simple clone version of Meetup.com",
+  "scripts": {
+    "start:staging": "cross-env process.env.NODE_ENV='staging' npm-run-all server:prod",
+    "start:prod": "cross-env process.env.NODE_ENV='production' npm-run-all server:prod",
+    "start:qa": "cross-env process.env.NODE_ENV='qa' npm-run-all server:dev",
+    "start": "cross-env process.env.NODE_ENV='development' npm-run-all server:dev",
+    "server:prod": "webpack-dev-server --hot --mode=production",
+    "server:dev": "webpack-dev-server --hot --mode=development",
+    "build:staging": "cross-env NODE_ENV='staging' && rm -rf dist && webpack --mode=production",
+    "build:prod": "cross-env NODE_ENV='prod' && rm -rf dist && webpack --mode=production",
+    "build:qa": "cross-env NODE_ENV='qa' && rm -rf dist && webpack --mode=development",
+    "build": "cross-env NODE_ENV='dev' && rm -rf dist && webpack --mode=development",
+    "prod": "webpack --config webpack.prod.js -p",
+    "lint": "./node_modules/.bin/eslint source/",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "test": "jest"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "custom-env": "^2.0.1",
