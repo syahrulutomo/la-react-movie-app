@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '@/assets/images/meetup-vector-logo.svg';
 import { routes } from '@/constants';
 
 export const PartialHeader = () => {
@@ -7,7 +8,7 @@ export const PartialHeader = () => {
     <header id="app-header">
       <div className="app-header--logo">
         <Link to="/">
-          <img src="//via.placeholder.com/35" alt="logo" />
+          <img src={logo} alt="logo" />
         </Link>
       </div>
       <nav className="app-header--navigation">
@@ -15,9 +16,6 @@ export const PartialHeader = () => {
           <NavLink exact to="/">
             Home
           </NavLink>
-        </li>
-        <li>
-          <NavLink to={routes.admin}>Admin</NavLink>
         </li>
         <li>
           <NavLink to={routes.login}>Login</NavLink>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { routes } from '@/constants';
-import { PartialHeader } from '@/components';
+import { PartialHeader, PartialPublicHeader } from '@/components';
 import {
   HomeView,
   LoginView,
@@ -13,9 +13,14 @@ import { ProfileView, DashboardView } from '@/views/private';
 import { PublicRoute, PrivateRoute } from './components';
 
 export function Routes() {
+  const isLoggedin = false;
+
   return (
     <BrowserRouter basename="/">
-      <PartialHeader />
+      {
+        isLoggedin ? <PartialHeader /> : <PartialPublicHeader/>
+      }
+
       <Switch>
         <PublicRoute exact path="/" component={HomeView} />
         <PublicRoute path={routes.login} component={LoginView} />

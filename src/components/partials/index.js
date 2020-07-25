@@ -1,3 +1,3 @@
 export * from './header';
-export * from './sidebar';
+export * from './public-header';
 export * from './footer';
