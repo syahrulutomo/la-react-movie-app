@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 export function PublicRoute({ component: Component, ...rest }) {
-
   return (
     <Route
       {...rest}
-        render={(props) =>  <Component {...props} />}
+      render={(props) => <Component {...props} />}
     />
   );
 }

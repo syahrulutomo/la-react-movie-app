@@ -6,7 +6,7 @@
 
   &:before {
     content: "";
-    position: fixed;
+    position: absolute;
     top: 240px;
     left: -110px;
     width: 200px;
@@ -19,7 +19,7 @@
 
   &:after {
     content: "";
-    position: fixed;
+    position: absolute;
     top: 40px;
     right: -300px;
     width: 550px;
@@ -49,7 +49,8 @@
         font-weight: 900;
         line-height: 1.24;
         font-size: 44px;
-        color: var(--theme-ui-colors-gray7,#212121);
+        font-family: $font-family-hero;
+        color: $theme-ui-colors-gray7;
         font-size: 32px;
         line-height: 1.24;
         margin-bottom: 16px;
@@ -58,7 +59,10 @@
         @media screen and (min-width: 576px) {
           font-size: 44px;
           line-height: 1.24;
-          padding-top: 8px;
+        }
+
+        @media screen and (min-width: 768px) {
+          margin-top: 32px;
         }
       }
 
@@ -81,8 +85,8 @@
         border-radius: 16px;
         border-radius: 8px;
         cursor: pointer;
-        color: var(--theme-ui-colors-white,#FFFFFF);
-        fill: var(--theme-ui-colors-white,#FFFFFF);
+        color: $theme-ui-colors-white;
+        fill: $theme-ui-colors-white;
         background-color: $theme-ui-colors-peach;
         border-color: $theme-ui-colors-peach;
         padding-left: 24px;
@@ -94,8 +98,8 @@
         letter-spacing: 1px;
 
         &:hover {
-          background-color: #f77070;
-          border-color: #f77070;
+          background-color: $theme-ui-colors-peach;
+          border-color: $theme-ui-colors-peach;
         }
       }
     }

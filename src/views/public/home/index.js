@@ -1,22 +1,42 @@
-import React from 'react';
-import { PublicBanner, PublicSearchBar, LayoutDefault, PublicEventList } from '@/components';
+import React, { useEffect } from 'react';
+import {
+  PublicBanner, LayoutDefault, PublicSearchBar,
+} from '@/components';
+import PublicEventList from '@/components/features/public-event-list';
+import { connect } from 'react-redux';
+import { fetchNearestEventList } from '@/services/redux/actions/event';
+import PropTypes from 'prop-types';
 
-const containerStyle = {
-  paddingBottom: "32px",
-  paddingLeft: "20px",
-  paddingRight: "20px",
-  boxSizing: "border-box",
-  width: "100%",
-  position: "relative",
-  overflowX: "hidden"
-}
+const HomeView = (props) => {
+  const { onFetchNearestEventList } = props;
 
-export function HomeView() {
+  useEffect(() => {
+    onFetchNearestEventList();
+  }, []);
+
   return (
     <LayoutDefault>
-      <PublicBanner/>
+      <PublicBanner />
       <PublicSearchBar />
       <PublicEventList />
     </LayoutDefault>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    laoding: state.event.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchNearestEventList: () => dispatch(fetchNearestEventList('kudus')),
+  };
+};
+
+HomeView.propTypes = {
+  onFetchNearestEventList: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

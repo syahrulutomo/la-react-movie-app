@@ -1,22 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { PublicSearchEvent, PublicSearchCity, PublicSearchEventButton } from '../forms';
+import { PublicSearchEventButton } from '../forms';
+import PublicSearchEvent from '../forms/inputs/public-search-event';
+import PublicSearchCity from '../forms/inputs/public-search-city';
 
 export const PublicSearchBar = () => {
-
-  const handleChange = (event) => {
-    console.log(event);
-  }
-
   return (
     <div className="public-search-bar">
-      <PublicSearchEvent handleChange={handleChange} value="12345678"/>
-      <PublicSearchCity handleChange={handleChange} value="Kudus"/>
-      <PublicSearchEventButton text="Search"/>
+      <PublicSearchEvent />
+      <PublicSearchCity />
+      <PublicSearchEventButton text="Search" />
     </div>
   );
-};
-
-PublicSearchBar.propTypes = {
-
 };

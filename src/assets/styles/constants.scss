@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700;800;900&display=swap');
+
 // Backgrounds
 $theme-ui-colors-merlot: #7A1D47;
 $theme-ui-colors-meetupRed: #FF1154;
@@ -55,8 +58,8 @@ $color-font-secondary: #c5c4c4;
 $color-font-tertiary: #212121;
 
 // Fonts
-$font-family-normal: "Graphik Meetup",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
-$font-family-mono: Monaco,"Andale Mono","Courier New",monospace;
+$font-family-normal: "Open Sans",Helvetica,Arial,sans-serif;
+$font-family-hero: "Raleway",Helvetica,Arial,sans-serif;
 $font-line-height-tiny: 1.5;
 $font-line-height-small: 1.43;
 $font-line-height-normal: 1.5;
@@ -77,6 +80,8 @@ $font-weight-normal: 400;
 $font-weight-regular: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
+$font-weight-bolder: 800;
+$font-weight-superbold: 900;
 $size-font-small: 0.75;
 $size-font-medium: 1;
 $size-font-large: 2;
