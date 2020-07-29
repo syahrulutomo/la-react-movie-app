@@ -54,11 +54,11 @@ export const getNearestEventListSuccess = (events) => {
   };
 };
 
-export const fetchNearestEventList = (origin) => {
+export const fetchNearestEventList = (latitude, longitude) => {
   return async (dispatch) => {
-    dispatch(getNearestEventListStart(origin));
+    dispatch(getNearestEventListStart());
     try {
-      const result = await axios.get(`/events/nearest/${origin}`);
+      const result = await axios.get(`/events/nearest/${latitude}/${longitude}`);
       dispatch(getNearestEventListSuccess(result.data));
     } catch (error) {
       dispatch(getNearestEventListFail(error));
@@ -93,11 +93,11 @@ export const searchEventFail = (error) => {
   };
 };
 
-export const searchEvent = (event) => {
+export const searchEvent = (event, latitude, longitude) => {
   return async (dispatch) => {
     dispatch(searchEventStart());
     try {
-      const events = await axios.get(`/events/${event}`);
+      const events = await axios.get(`/events/find/${event}/${latitude}/${longitude}`);
       dispatch(searchEventSuccess(events));
     } catch (error) {
       dispatch(searchEventFail(error));

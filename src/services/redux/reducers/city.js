@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/action-types';
 
 const initialState = {
   cities: [],
-  selected: '',
+  selected: {},
   searchedCities: [],
   loading: false,
   nearest: [],

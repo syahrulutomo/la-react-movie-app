@@ -15,4 +15,21 @@
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.12);
     border-radius: $space-half;
   }
+
+  @media screen and (min-width: 990px) {
+    margin-top: 10px !important;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 500px;
+      right: -60px;
+      width: 120px;
+      height: 130px;
+      border-radius: 120% 50% 60% 120%;
+      background-color: $color-merlot;
+      opacity: .08;
+      z-index: -5;
+    }
+  }
 }

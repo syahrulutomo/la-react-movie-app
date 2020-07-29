@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fetchNearestEventList } from '@/services/redux/actions/event';
 import { Event } from './event';
 
 const PublicEventList = (props) => {
-  const { events, nearest } = props;
+  const {
+    events, nearestCity, selectedCity, searchedCity, onFetchNearestEventList,
+  } = props;
   const [mappedEvents, setMappedEvents] = useState([]);
 
   const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
@@ -31,14 +34,23 @@ const PublicEventList = (props) => {
     setMappedEvents(evts);
   }, [events]);
 
-  const city = nearest.length > 0 ? ` ${nearest[0].name}, ${nearest[0].countryAbbr}` : '';
+  useEffect(() => {
+    if (selectedCity._id !== undefined) {
+      onFetchNearestEventList(selectedCity.location.coordinates[1], selectedCity.location.coordinates[0]);
+    } else if (nearestCity.length > 0) {
+      onFetchNearestEventList(nearestCity[0].location.coordinates[1], nearestCity[0].location.coordinates[0]);
+    }
+  }, [searchedCity, selectedCity]);
+
+  const city = (nearestCity.length > 0 ? ` ${nearestCity[0].name}, ${nearestCity[0].countryAbbr}` : 'you')
+              || selectedCity.name;
 
   return (
     <div className="app-event-list">
       <div style={{ overflow: 'hidden' }}>
         <p className="app-event-list--title">
           Event near
-          { city }
+          {` ${city}`}
         </p>
         <div className="app-event-list--content">
           <ul>
@@ -51,15 +63,26 @@ const PublicEventList = (props) => {
 };
 
 PublicEventList.propTypes = {
-  events: PropTypes.array.isRequired,
-  nearest: PropTypes.array.isRequired,
+  events: PropTypes.array,
+  nearestCity: PropTypes.array,
+  selectedCity: PropTypes.object,
+  searchedCity: PropTypes.array,
+  onFetchNearestEventList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    nearest: state.city.nearest,
+    nearestCity: state.city.nearest,
     events: state.event.events,
+    selectedCity: state.city.selected,
+    searchedCity: state.city.searchedCities,
   };
 };
 
-export default connect(mapStateToProps)(PublicEventList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchNearestEventList: (latitude, longitude) => dispatch(fetchNearestEventList(latitude, longitude)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PublicEventList);

@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { selectEvent } from '@/services/redux/actions/event';
 
 const PublicSearchEvent = (props) => {
-  const { onSelectEvent } = props;
+  const {
+    onSelectEvent,
+  } = props;
 
   const [event, setEvent] = useState('');
 

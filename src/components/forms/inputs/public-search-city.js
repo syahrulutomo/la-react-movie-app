@@ -6,14 +6,41 @@ import { selectCity, searchCity, findNearestCity } from '@/services/redux/action
 
 const PublicSearchCity = (props) => {
   const {
-    onSelectCity, nearest, onFindNearestCity,
+    onSelectCity, nearest, onFindNearestCity, onSearchCity, searched,
   } = props;
 
   const [city, setCity] = useState('');
+  const [temp, setTemp] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (e) => {
-    setCity(e.target.value);
-    onSelectCity(e.target.value);
+    setIsOpen(true);
+    onSearchCity(e.target.value);
+  };
+
+  const handleClick = (e) => {
+    setCity(e.target.innerHTML);
+    let text = e.target.innerHTML;
+    text = text.split(',');
+    if (searched) {
+      const c = searched.filter((s) => s.name === text[0]);
+      if (c.length > 0) onSelectCity(c[0]);
+      setTemp('');
+    }
+
+    if (isOpen) setIsOpen(false);
+    else setIsOpen(true);
+  };
+
+  const handleFocus = () => {
+    setTemp(city);
+    setCity('');
+  };
+
+  const handleBlur = (e) => {
+    if (e.target.value === '') {
+      setCity(temp);
+    }
   };
 
   const [position, setPosition] = useState({ latitude: '', longitude: '' });
@@ -28,12 +55,31 @@ const PublicSearchCity = (props) => {
 
   useEffect(() => {
     getPosition()
-      .then(onFindNearestCity(position.latitude, position.longitude));
+      .then(() => {
+        if (position.latitude && position.longitude) {
+          onFindNearestCity(position.latitude, position.longitude);
+        }
+      });
   }, [position.latitude, position.longitude]);
 
   useEffect(() => {
-    if (nearest.length > 0) setCity(nearest[0].name);
+    if (nearest.length > 0) {
+      setCity(`${nearest[0].name}, ${nearest[0].countryAbbr}`);
+      onSelectCity(nearest[0]);
+    }
   }, [nearest]);
+
+  const searchedList = searched.map((s) => {
+    return (
+      <li className="list-item" key={s._id}>
+        <p style={{ margin: 0, width: '100%' }} onClick={handleClick}>
+          {`${s.name}`}
+          ,
+          {` ${s.countryAbbr}`}
+        </p>
+      </li>
+    );
+  });
 
   return (
     <div>
@@ -42,9 +88,20 @@ const PublicSearchCity = (props) => {
         type="text"
         name="public-search-city"
         value={city}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         onChange={handleChange}
         style={{ backgroundImage: `url(${location})` }}
       />
+      {
+        isOpen ? (
+          <div className="public-search-city-popup">
+            <ul className="list">
+              {searchedList}
+            </ul>
+          </div>
+        ) : ''
+      }
     </div>
   );
 };
@@ -52,6 +109,8 @@ const PublicSearchCity = (props) => {
 PublicSearchCity.propTypes = {
   onSelectCity: PropTypes.func.isRequired,
   nearest: PropTypes.array,
+  searched: PropTypes.array,
+  selected: PropTypes.object,
   onSearchCity: PropTypes.func,
   onFindNearestCity: PropTypes.func,
 };
@@ -59,6 +118,8 @@ PublicSearchCity.propTypes = {
 const mapStateToProps = (state) => {
   return {
     nearest: state.city.nearest,
+    searched: state.city.searchedCities,
+    selected: state.city.selected,
   };
 };
 

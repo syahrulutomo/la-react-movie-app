@@ -1,8 +1,5 @@
 .public-banner {
   height: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1060px;
 
   &:before {
     content: "";
@@ -26,8 +23,68 @@
     height: 600px;
     border-radius: 50%;
     background-color: $color-peach;
-    opacity: .07;
+    opacity: .05;
     z-index: -5;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -170px;
+      left: 300px;
+      width: 400px;
+      height: 240px;
+      border-radius: 10% 30% 80% 40%;
+      background-color: $color-beach;
+      opacity: .4;
+      z-index: -5;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: -270px;
+      right: -270px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50% 70%;
+      background-color: $color-peach;
+      opacity: .05;
+      z-index: -5;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    height: 420px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -170px;
+      left: 150px;
+      width: 440px;
+      height: 270px;
+      border-radius: 20% 90% 120% 75%;
+      background-color: $color-beach;
+      opacity: .4;
+      z-index: -5;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: -180px;
+      right: -90px;
+      width: 860px;
+      height: 750px;
+      border-radius: 50% 50% 50% 50%;
+      background-color: $color-peach;
+      opacity: .05;
+      z-index: -5;
+    }
   }
 
   &--container {
@@ -40,6 +97,10 @@
 
       @media screen and (min-width: 576px) {
         width: 390px;
+      }
+
+      @media screen and (min-width: 990px) {
+        width: 480px;
       }
 
       .hero-title {
@@ -63,6 +124,10 @@
 
         @media screen and (min-width: 768px) {
           margin-top: 32px;
+        }
+
+        @media screen and (min-width: 990px) {
+          font-size: 56px;
         }
       }
 
@@ -101,6 +166,23 @@
           background-color: $theme-ui-colors-peach;
           border-color: $theme-ui-colors-peach;
         }
+
+        @media screen and (min-width: 990px) {
+          width: 205px;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 330px;
+            left: -20px;
+            width: 250px;
+            height: 240px;
+            border-radius: 80% 120% 80% 70%;
+            background-color: $color-warning-orange;
+            opacity: .3;
+            z-index: -5;
+          }
+        }
       }
     }
 
@@ -110,6 +192,12 @@
       margin-top: 245px;
       width: 100%;
       box-sizing: border-box;
+      z-index: -1;
+
+      img {
+        max-width: 600px;
+        width: 100%;
+      }
 
       @media screen and (min-width: 576px) {
         margin-left: 30%;
@@ -119,8 +207,19 @@
 
       @media screen and (min-width: 768px) {
         margin-left: 350px;
-        margin-top: 0;
+        margin-top: 50px;
         width: 60%;
+
+        img {
+          width: unset;
+        }
+      }
+
+      @media screen and (min-width: 990px) {
+        width: 60%;
+        margin-top: 96px;
+        margin-left: 500px;
+        z-index: -1;
       }
     }
   }
