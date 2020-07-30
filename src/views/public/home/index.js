@@ -113,9 +113,21 @@ const HomeView = (props) => {
       <ContainerDefault>
         <PublicBanner />
         <PublicSearchBar />
-        <PublicEventList title={city} events={mappedNearestEvents} />
-        <PublicEventList title="Tech" events={mappedTechEvents} />
-        <PublicEventList title="Film" events={mappedFilmEvents} />
+        {
+          mappedNearestEvents.length > 0
+            ? <PublicEventList title={city} events={mappedNearestEvents} />
+            : ''
+        }
+        {
+          mappedTechEvents.length > 0
+            ? <PublicEventList title="Tech" events={mappedTechEvents} />
+            : ''
+        }
+        {
+          mappedFilmEvents.length > 0
+            ? <PublicEventList title="Film" events={mappedFilmEvents} />
+            : ''
+        }
       </ContainerDefault>
     </LayoutDefault>
   );
