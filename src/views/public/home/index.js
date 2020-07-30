@@ -17,6 +17,7 @@ const HomeView = (props) => {
   } = props;
 
   const [mappedTechEvents, setMappedTechEvents] = useState([]);
+  const [mappedFilmEvents, setMappedFilmEvents] = useState([]);
   const [mappedNearestEvents, setMappedNearestEvents] = useState([]);
 
   const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
@@ -78,6 +79,32 @@ const HomeView = (props) => {
     }
   }, [mappedTechEvents, categories]);
 
+  useEffect(() => {
+    if (mappedTechEvents.length === 0) {
+      if (categories.length > 0) {
+        const f = categories.find((c) => c.name === 'Film').events;
+        const evts = f.map((e) => {
+          const formattedDate = moment(e.date).format('MMM DD');
+          const day = moment(formattedDate).day();
+          return (
+            <li key={e._id}>
+              <Event
+                id={e._id}
+                thumbnail={e.photos[e.photos.length - 1]}
+                alt={e.title}
+                date={`${daysOfWeek[day]}, ${formattedDate.toLocaleUpperCase()}`}
+                title={e.title}
+                groupName={e.groupHost.name}
+                attendees={e.attendees}
+              />
+            </li>
+          );
+        });
+        setMappedFilmEvents(evts);
+      }
+    }
+  }, [mappedTechEvents, categories]);
+
   const city = selectedCity._id !== undefined ? `Event near ${selectedCity.name}, ${selectedCity.countryAbbr} ` : 'Event near you';
 
   return (
@@ -88,7 +115,7 @@ const HomeView = (props) => {
         <PublicSearchBar />
         <PublicEventList title={city} events={mappedNearestEvents} />
         <PublicEventList title="Tech" events={mappedTechEvents} />
-        {/* <PublicEventList title="Film" events={mappedNearestEvents} /> */}
+        <PublicEventList title="Film" events={mappedFilmEvents} />
       </ContainerDefault>
     </LayoutDefault>
   );

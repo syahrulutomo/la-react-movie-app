@@ -142,6 +142,10 @@
     transform: translateY(-5px);
     box-shadow: rgba(46, 62, 72, 0.12) 0px 2px 2px 0px, rgba(31, 38, 42, 0.12) 0px 2.5px 4px 0px;
   }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .slider-button--prev {
