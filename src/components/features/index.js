@@ -1,3 +1,3 @@
 export * from './public-banner';
-export * from './public-search-bar';
+export * from './slider-button';
 export * from './event';

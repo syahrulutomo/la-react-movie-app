@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/action-types';
 
 const initialState = {
   events: [],
+  nearestEvents: [],
   selected: '',
   loading: false,
 };
@@ -29,7 +30,7 @@ const getNearestEventListStart = (state) => {
 const getNearestEventListSuccess = (state, action) => {
   return updateObject(state, {
     loading: false,
-    events: action.events,
+    nearestEvents: action.events,
   });
 };
 

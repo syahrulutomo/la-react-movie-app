@@ -1,6 +1,5 @@
 .app-event-list {
-  padding-top: 32px;
-  padding-bottom: 16px;
+  margin-top: 24px;
   position: relative;
 
   .app-event-list--title {
@@ -8,6 +7,7 @@
     line-height: $font-line-height-section-title;
     color: $color-gray-7;
     font-weight: $font-weight-bold;
+    margin-bottom: 0;
 
     @media screen and (min-width: 768px) {
       font-size: 32px;
@@ -17,10 +17,15 @@
 
   .app-event-list--content {
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 24px;
+    transition: transform 1s ease;
 
     ul {
       display: flex;
       align-items: flex-start;
+      margin-top: 0;
       padding-left: 0;
 
       &::-webkit-scrollbar {
@@ -37,10 +42,6 @@
       li {
         list-style: none;
         margin-right: 20px;
-
-        &:last-of-type {
-          margin-right: 0;
-        }
 
         .app-event {
           background-clip: padding-box;

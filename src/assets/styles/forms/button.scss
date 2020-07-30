@@ -41,3 +41,113 @@
   }
 }
 
+.join-btn {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  text-decoration: none;
+  font-size: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: $theme-ui-colors-white;
+  border: 0;
+  border-radius: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: $theme-ui-colors-white;
+  fill: $theme-ui-colors-white;
+  background-color: $theme-ui-colors-peach;
+  border-color: $theme-ui-colors-peach;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: 24px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  z-index: 99;
+
+  &:hover {
+    opacity: .9;
+  }
+
+  @media screen and (min-width: 990px) {
+    width: 205px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 330px;
+      left: -20px;
+      width: 250px;
+      height: 240px;
+      border-radius: 80% 120% 80% 70%;
+      background-color: $color-warning-orange;
+      opacity: .3;
+      z-index: -5;
+    }
+  }
+}
+
+.slider-button-next {
+  right: -20px;
+  box-shadow: rgba(46, 62, 72, 0.12) 0px 0px 2px 0px, rgba(46, 62, 72, 0.12) 0px 2px 4px 0px;
+  bottom: 0px;
+  height: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: absolute;
+  top: 0px;
+  width: 40px;
+  z-index: 10;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(46, 62, 72, 0.12);
+  border-image: initial;
+  background: white !important;
+  border-radius: 100% !important;
+}
+
+.slider-button {
+  top: 50px;
+  box-shadow: rgba(46, 62, 72, 0.12) 0px 0px 2px 0px, rgba(46, 62, 72, 0.12) 0px 2px 4px 0px;
+  bottom: 0px;
+  height: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: absolute;
+  width: 40px;
+  z-index: 10;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(46, 62, 72, 0.12);
+  border-image: initial;
+  background: white !important;
+  border-radius: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 30px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: rgba(46, 62, 72, 0.12) 0px 2px 2px 0px, rgba(31, 38, 42, 0.12) 0px 2.5px 4px 0px;
+  }
+}
+
+.slider-button--prev {
+  left: -22px;
+}
+
+.slider-button--next {
+  right: -22px;
+}

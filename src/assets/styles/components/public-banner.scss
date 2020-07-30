@@ -63,11 +63,11 @@
     &:before {
       content: "";
       position: absolute;
-      top: -170px;
+      top: -230px;
       left: 150px;
-      width: 440px;
-      height: 270px;
-      border-radius: 20% 90% 120% 75%;
+      width: 400px;
+      height: 280px;
+      border-radius: 60% 100% 180% 75%;
       background-color: $color-beach;
       opacity: .4;
       z-index: -5;
@@ -128,60 +128,6 @@
 
         @media screen and (min-width: 990px) {
           font-size: 56px;
-        }
-      }
-
-
-      .join-btn {
-        box-sizing: border-box;
-        margin: 0;
-        min-width: 0;
-        display: inline-block;
-        text-align: center;
-        line-height: inherit;
-        text-decoration: none;
-        font-size: 16px;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        color: $theme-ui-colors-white;
-        border: 0;
-        border-radius: 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        color: $theme-ui-colors-white;
-        fill: $theme-ui-colors-white;
-        background-color: $theme-ui-colors-peach;
-        border-color: $theme-ui-colors-peach;
-        padding-left: 24px;
-        padding-right: 24px;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        margin-top: 24px;
-        font-weight: 400;
-        letter-spacing: 1px;
-
-        &:hover {
-          background-color: $theme-ui-colors-peach;
-          border-color: $theme-ui-colors-peach;
-        }
-
-        @media screen and (min-width: 990px) {
-          width: 205px;
-
-          &:before {
-            content: "";
-            position: absolute;
-            top: 330px;
-            left: -20px;
-            width: 250px;
-            height: 240px;
-            border-radius: 80% 120% 80% 70%;
-            background-color: $color-warning-orange;
-            opacity: .3;
-            z-index: -5;
-          }
         }
       }
     }

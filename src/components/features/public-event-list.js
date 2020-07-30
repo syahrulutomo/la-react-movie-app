@@ -1,88 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import moment from 'moment';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchNearestEventList } from '@/services/redux/actions/event';
-import { Event } from './event';
+import nextIcon from '@/assets/images/keyboard_arrow_right-black-18dp.svg';
+import prevIcon from '@/assets/images/keyboard_arrow_left-black-18dp.svg';
+import { SliderButton } from './slider-button';
 
 const PublicEventList = (props) => {
   const {
-    events, nearestCity, selectedCity, searchedCity, onFetchNearestEventList,
+    events, title,
   } = props;
-  const [mappedEvents, setMappedEvents] = useState([]);
 
-  const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const [step, setStep] = useState(0);
 
-  useEffect(() => {
-    const evts = events.map((e) => {
-      const formattedDate = moment(e.date).format('MMM DD');
-      const day = moment(formattedDate).day();
-      return (
-        <li key={e._id}>
-          <Event
-            id={e._id}
-            thumbnail={e.photos[e.photos.length - 1]}
-            alt={e.title}
-            date={`${daysOfWeek[day]}, ${formattedDate.toLocaleUpperCase()}`}
-            title={e.title}
-            groupName={e.groupHost.name}
-            attendees={e.attendees}
-          />
-        </li>
-      );
-    });
-    setMappedEvents(evts);
-  }, [events]);
-
-  useEffect(() => {
-    if (selectedCity._id !== undefined) {
-      onFetchNearestEventList(selectedCity.location.coordinates[1], selectedCity.location.coordinates[0]);
-    } else if (nearestCity.length > 0) {
-      onFetchNearestEventList(nearestCity[0].location.coordinates[1], nearestCity[0].location.coordinates[0]);
+  const handleClick = (type) => {
+    if (type === 'next' && step + 4 < events.length) {
+      setStep(step + 1);
+    } else if (type === 'prev' && step > 0) {
+      setStep(step - 1);
     }
-  }, [searchedCity, selectedCity]);
-
-  const city = (nearestCity.length > 0 ? ` ${nearestCity[0].name}, ${nearestCity[0].countryAbbr}` : 'you')
-              || selectedCity.name;
+  };
 
   return (
     <div className="app-event-list">
+      {
+        step > 0
+          ? <SliderButton type="prev" img={prevIcon} alt="prev icon" handleClick={() => handleClick('prev')} />
+          : ''
+      }
       <div style={{ overflow: 'hidden' }}>
         <p className="app-event-list--title">
-          Event near
-          {` ${city}`}
+          { title }
         </p>
-        <div className="app-event-list--content">
+        <div className="app-event-list--content" style={{ translate: 'transform 1s ease', transform: `translateX(${step * -270}px)` }}>
           <ul>
-            {mappedEvents || ''}
+            {events}
           </ul>
         </div>
       </div>
+      {
+        step + 4 < events.length
+          ? <SliderButton type="next" img={nextIcon} alt="prev icon" handleClick={() => handleClick('next')} />
+          : ''
+      }
+
     </div>
   );
 };
 
 PublicEventList.propTypes = {
   events: PropTypes.array,
-  nearestCity: PropTypes.array,
-  selectedCity: PropTypes.object,
-  searchedCity: PropTypes.array,
-  onFetchNearestEventList: PropTypes.func.isRequired,
+  title: PropTypes.string,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    nearestCity: state.city.nearest,
-    events: state.event.events,
-    selectedCity: state.city.selected,
-    searchedCity: state.city.searchedCities,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFetchNearestEventList: (latitude, longitude) => dispatch(fetchNearestEventList(latitude, longitude)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PublicEventList);
+export default PublicEventList;
