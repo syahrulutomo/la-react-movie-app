@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import {
   PublicBanner, LayoutDefault, ContainerDefault, PartialPublicHeader,
 } from '@/components';
@@ -11,7 +11,7 @@ import { fetchNearestEventList } from '@/services/redux/actions/event';
 import { fetchCategoryList, fetchCategoryByName } from '@/services/redux/actions/category';
 import moment from 'moment';
 
-const HomeView = (props) => {
+const HomeView = memo((props) => {
   const {
     selectedCity, onFetchNearestEventList, onFetchCategoryList, categories, nearestEvents,
   } = props;
@@ -131,7 +131,7 @@ const HomeView = (props) => {
       </ContainerDefault>
     </LayoutDefault>
   );
-};
+});
 
 HomeView.propTypes = {
   nearestCity: PropTypes.array,

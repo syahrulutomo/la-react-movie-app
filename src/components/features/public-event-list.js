@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import nextIcon from '@/assets/images/keyboard_arrow_right-black-18dp.svg';
 import prevIcon from '@/assets/images/keyboard_arrow_left-black-18dp.svg';
 import { SliderButton } from './slider-button';
 
-const PublicEventList = (props) => {
+const PublicEventList = memo((props) => {
   const {
     events, title,
   } = props;
@@ -44,7 +44,7 @@ const PublicEventList = (props) => {
 
     </div>
   );
-};
+});
 
 PublicEventList.propTypes = {
   events: PropTypes.array,

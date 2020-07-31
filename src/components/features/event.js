@@ -11,6 +11,7 @@ const Event = (props) => {
   } = props;
 
   const [imageUrl, setImageUrl] = useState('');
+  const [didLoad, setDidLoad] = useState(false);
 
   const getImageUrl = async (img) => {
     const url = await getImage('events', img);
@@ -21,13 +22,14 @@ const Event = (props) => {
     if (thumbnail) getImageUrl(thumbnail);
   }, [thumbnail]);
 
+  const style = didLoad ? {} : { visibility: 'hidden' };
   return (
     <article className="app-event" key={id}>
       <div className="app-event-thumbnail">
         {
-          loading || !thumbnail
-            ? <ThumbnailLoader />
-            : <img src={imageUrl} alt={alt} />
+          !loading || didLoad
+            ? <img src={imageUrl} loading="lazy" alt={alt} style={style} onLoad={() => setDidLoad(true)} />
+            : <ThumbnailLoader />
         }
       </div>
       <div className="app-event-content">
