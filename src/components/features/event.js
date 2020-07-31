@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getImage } from '@/utilities/firebase';
+import { connect } from 'react-redux';
+import { ThumbnailLoader, TextLoader } from '@/components/loaders';
 import AttendeeList from './attendee-list';
 
-export const Event = (props) => {
+const Event = (props) => {
   const {
-    id, thumbnail, alt, date, title, groupName, attendees,
+    id, thumbnail, alt, date, title, groupName, attendees, loading,
   } = props;
 
   const [imageUrl, setImageUrl] = useState('');
@@ -22,12 +24,28 @@ export const Event = (props) => {
   return (
     <article className="app-event" key={id}>
       <div className="app-event-thumbnail">
-        <img src={imageUrl} alt={alt} />
+        {
+          loading || !thumbnail
+            ? <ThumbnailLoader />
+            : <img src={imageUrl} alt={alt} />
+        }
       </div>
       <div className="app-event-content">
-        <p className="date">{date}</p>
-        <p className="title">{title}</p>
-        <p className="group-name">{groupName}</p>
+        {
+          loading || !date
+            ? <TextLoader />
+            : <p className="date">{date}</p>
+        }
+        {
+          loading || !title
+            ? <TextLoader />
+            : <p className="title">{title}</p>
+        }
+        {
+          loading || !groupName
+            ? <TextLoader style={{ height: '13px' }} />
+            : <p className="group-name">{groupName}</p>
+        }
         <AttendeeList attendees={attendees} />
       </div>
     </article>
@@ -42,4 +60,13 @@ Event.propTypes = {
   title: PropTypes.string.isRequired,
   groupName: PropTypes.string.isRequired,
   attendees: PropTypes.array.isRequired,
+  loading: PropTypes.bool,
 };
+
+const mapStateToProps = (state) => {
+  return {
+    loading: state.event.loading,
+  };
+};
+
+export default connect(mapStateToProps)(Event);

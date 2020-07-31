@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   PublicBanner, LayoutDefault, ContainerDefault, PartialPublicHeader,
-  Event,
 } from '@/components';
+import Event from '@/components/features/event';
 import PublicSearchBar from '@/components/features/public-search-bar';
 import PublicEventList from '@/components/features/public-event-list';
 import { connect } from 'react-redux';
