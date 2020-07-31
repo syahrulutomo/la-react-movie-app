@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getImage } from '@/utilities/firebase';
-import { AvatarLoader } from '@/components/loaders';
 import { connect } from 'react-redux';
+import { AvatarLoader } from '../loaders';
 
 const Attendee = (props) => {
   const { src, alt, loading } = props;
@@ -25,7 +25,6 @@ const Attendee = (props) => {
           ? <AvatarLoader />
           : <img src={imageUrl} alt={alt} />
       }
-      <AvatarLoader />
     </div>
   );
 };
