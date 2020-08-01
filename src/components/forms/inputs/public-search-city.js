@@ -15,6 +15,7 @@ const PublicSearchCity = (props) => {
 
   const handleChange = (e) => {
     setIsOpen(true);
+    setCity(e.target.value);
     onSearchCity(e.target.value);
   };
 
