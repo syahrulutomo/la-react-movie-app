@@ -35,7 +35,7 @@ const HomeView = memo((props) => {
   useEffect(() => {
     const evts = nearestEvents.map((e) => {
       const formattedDate = moment(e.date).format('MMM DD');
-      const day = moment(formattedDate).day();
+      const day = moment(e.date).day();
       return (
         <li key={e._id}>
           <Event

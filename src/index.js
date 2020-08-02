@@ -11,6 +11,7 @@ import cityReducer from '@/services/redux/reducers/city';
 import categoryReducer from '@/services/redux/reducers/category';
 import { Routes } from './routes';
 
+import 'normalize.css';
 import './assets/styles/index.scss';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
