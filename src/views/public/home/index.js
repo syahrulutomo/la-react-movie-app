@@ -32,49 +32,38 @@ const HomeView = memo((props) => {
     onFetchCategoryList();
   }, []);
 
+  const mapToJSX = (data, setter) => {
+    if (data.length > 0) {
+      const evts = data.map((e) => {
+        const formattedDate = moment(e.date).format('MMM DD');
+        const day = moment(e.date).day();
+        return (
+          <li key={e._id}>
+            <Event
+              id={e._id}
+              thumbnail={e.photos[e.photos.length - 1]}
+              alt={e.title}
+              date={`${daysOfWeek[day]}, ${formattedDate.toLocaleUpperCase()}`}
+              title={e.title}
+              groupName={e.groupHost.name}
+              attendees={e.attendees}
+            />
+          </li>
+        );
+      });
+      setter(evts);
+    }
+  };
+
   useEffect(() => {
-    const evts = nearestEvents.map((e) => {
-      const formattedDate = moment(e.date).format('MMM DD');
-      const day = moment(e.date).day();
-      return (
-        <li key={e._id}>
-          <Event
-            id={e._id}
-            thumbnail={e.photos[e.photos.length - 1]}
-            alt={e.title}
-            date={`${daysOfWeek[day]}, ${formattedDate.toLocaleUpperCase()}`}
-            title={e.title}
-            groupName={e.groupHost.name}
-            attendees={e.attendees}
-          />
-        </li>
-      );
-    });
-    setMappedNearestEvents(evts);
+    mapToJSX(nearestEvents, setMappedNearestEvents);
   }, [nearestEvents]);
 
   useEffect(() => {
     if (mappedTechEvents.length === 0) {
       if (categories.length > 0) {
         const t = categories.find((c) => c.name === 'Tech').events;
-        const evts = t.map((e) => {
-          const formattedDate = moment(e.date).format('MMM DD');
-          const day = moment(formattedDate).day();
-          return (
-            <li key={e._id}>
-              <Event
-                id={e._id}
-                thumbnail={e.photos[e.photos.length - 1]}
-                alt={e.title}
-                date={`${daysOfWeek[day]}, ${formattedDate.toLocaleUpperCase()}`}
-                title={e.title}
-                groupName={e.groupHost.name}
-                attendees={e.attendees}
-              />
-            </li>
-          );
-        });
-        setMappedTechEvents(evts);
+        mapToJSX(t, setMappedTechEvents);
       }
     }
   }, [mappedTechEvents, categories]);
@@ -83,24 +72,7 @@ const HomeView = memo((props) => {
     if (mappedTechEvents.length === 0) {
       if (categories.length > 0) {
         const f = categories.find((c) => c.name === 'Film').events;
-        const evts = f.map((e) => {
-          const formattedDate = moment(e.date).format('MMM DD');
-          const day = moment(formattedDate).day();
-          return (
-            <li key={e._id}>
-              <Event
-                id={e._id}
-                thumbnail={e.photos[e.photos.length - 1]}
-                alt={e.title}
-                date={`${daysOfWeek[day]}, ${formattedDate.toLocaleUpperCase()}`}
-                title={e.title}
-                groupName={e.groupHost.name}
-                attendees={e.attendees}
-              />
-            </li>
-          );
-        });
-        setMappedFilmEvents(evts);
+        mapToJSX(f, setMappedFilmEvents);
       }
     }
   }, [mappedTechEvents, categories]);
