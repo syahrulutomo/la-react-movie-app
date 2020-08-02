@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { getImage } from '@/utilities/firebase';
 import { connect } from 'react-redux';
 import { ThumbnailLoader, TextLoader } from '@/components/loaders';
 import AttendeeList from './attendee-list';
 
-const Event = (props) => {
+const Event = memo((props) => {
   const {
     id, thumbnail, alt, date, title, groupName, attendees, loading,
   } = props;
@@ -22,14 +22,13 @@ const Event = (props) => {
     if (thumbnail) getImageUrl(thumbnail);
   }, [thumbnail]);
 
-  const style = didLoad ? {} : { visibility: 'hidden' };
   return (
     <article className="app-event" key={id}>
       <div className="app-event-thumbnail">
+        <img src={imageUrl} loading="lazy" alt={alt} onLoad={() => setDidLoad(true)} />
         {
-          !loading || didLoad
-            ? <img src={imageUrl} loading="lazy" alt={alt} style={style} onLoad={() => setDidLoad(true)} />
-            : <ThumbnailLoader />
+          !didLoad
+            ? <ThumbnailLoader /> : ''
         }
       </div>
       <div className="app-event-content">
@@ -52,7 +51,7 @@ const Event = (props) => {
       </div>
     </article>
   );
-};
+});
 
 Event.propTypes = {
   id: PropTypes.string.isRequired,
