@@ -1,5 +1,5 @@
 .app-event-list {
-  margin-top: 24px;
+  margin-top: $space-and-half;
   position: relative;
 
   .app-event-list--title {
@@ -19,7 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin-top: 24px;
+    margin-top: $space-and-half;
     transition: transform 1s ease;
 
     ul {
@@ -41,7 +41,7 @@
 
       li {
         list-style: none;
-        margin-right: 20px;
+        margin-right: $size-space-5;
 
         .app-event {
           background-clip: padding-box;
@@ -51,12 +51,12 @@
           height: 100%;
           display: flex;
           overflow-wrap: break-word;
-          background-color: rgb(255, 255, 255);
+          background-color: $theme-ui-colors-white;
           z-index: 0;
           width: 250px;
           flex-direction: column;
           justify-content: space-around;
-          padding-bottom: 4px;
+          padding-bottom: $space-quarter;
 
           &-thumbnail {
             position: relative;
@@ -64,8 +64,9 @@
             height: inherit;
             width: 250px;
             height: 140px;
-            border-radius: 8px;
-            margin-bottom: 16px;
+            border-radius: $default-radius;
+            margin-bottom: $space;
+
             img {
               position: absolute;
               top: 0px;
@@ -77,9 +78,9 @@
 
           .date {
             margin: 0;
-            font-size: 14px;
-            font-weight: 700;
-            color: #877457 !important;
+            font-size: $font-size-small;
+            font-weight: $font-weight-bold;
+            color:$theme-ui-colors-darkGold !important;
           }
 
           .title {
@@ -90,7 +91,7 @@
           }
 
           .group-name {
-            margin: 8px 0;
+            margin: $space-half 0;
             font-size: $font-size-small;
             color: $theme-ui-colors-gray6;
             font-weight: $font-weight-normal;

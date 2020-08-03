@@ -43,37 +43,27 @@
 
 .join-btn {
   box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: inline-block;
   text-align: center;
   line-height: inherit;
   text-decoration: none;
-  font-size: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: $theme-ui-colors-white;
-  border: 0;
-  border-radius: 16px;
-  border-radius: 8px;
-  cursor: pointer;
+  font-size: $font-size-normal;
   color: $theme-ui-colors-white;
   fill: $theme-ui-colors-white;
   background-color: $theme-ui-colors-peach;
+  border-radius: $default-radius;
   border-color: $theme-ui-colors-peach;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  margin-top: 24px;
+  padding-left: $space-and-half;
+  padding-right: $space-and-half;
+  padding-top: $space;
+  padding-bottom: $space;
+  margin-top: $space-and-half;
   font-weight: 400;
   letter-spacing: 1px;
   z-index: 99;
 
   &:hover {
     opacity: .9;
+    cursor: pointer;
   }
 
   @media screen and (min-width: 990px) {
@@ -114,14 +104,14 @@
 }
 
 .slider-button {
+  position: absolute;
   top: 50px;
-  box-shadow: rgba(46, 62, 72, 0.12) 0px 0px 2px 0px, rgba(46, 62, 72, 0.12) 0px 2px 4px 0px;
   bottom: 0px;
-  height: 40px;
+  box-shadow: rgba(46, 62, 72, 0.12) 0px 0px 2px 0px, rgba(46, 62, 72, 0.12) 0px 2px 4px 0px;
   margin-top: auto;
   margin-bottom: auto;
-  position: absolute;
   width: 40px;
+  height: 40px;
   z-index: 10;
   border-width: 1px;
   border-style: solid;

@@ -107,23 +107,20 @@
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        font-weight: 900;
-        line-height: 1.24;
-        font-size: 44px;
+        font-weight: $font-weight-superbold;
         font-family: $font-family-hero;
         color: $theme-ui-colors-gray7;
-        font-size: 32px;
-        line-height: 1.24;
-        margin-bottom: 16px;
-        padding-top: 8px;
+        font-size: $font-size-display-2;
+        line-height: $font-line-height-display-1;
+        margin-bottom: $space;
+        padding-top: $space-half;
 
         @media screen and (min-width: 576px) {
           font-size: 44px;
-          line-height: 1.24;
         }
 
         @media screen and (min-width: 768px) {
-          margin-top: 32px;
+          margin-top: $space-double;
         }
 
         @media screen and (min-width: 990px) {
@@ -134,7 +131,7 @@
 
     .hero-image-container {
       position: absolute;
-      margin-left: 20px;
+      margin-left: $size-space-5;
       margin-top: 245px;
       width: 100%;
       box-sizing: border-box;

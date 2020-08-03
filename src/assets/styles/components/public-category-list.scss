@@ -5,15 +5,15 @@
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
-  padding-top: 32px;
+  padding-top: $space-double;
 
   &--title {
    color: $theme-ui-colors-gray7;
-   font-size: 20px;
+   font-size: $font-size-section-title;
    margin-top: 0;
-   margin-bottom: 20px;
+   margin-bottom: $size-space-5;
    width: 100%;
-   font-weight: 800;
+   font-weight: $font-weight-bolder;
 
    @media screen and (min-width: 768px) {
      font-size: 22px;
@@ -52,7 +52,7 @@
     display: inline-block;
     width: 88.88888888888889px;
     height: 50px;
-    border-radius: 8px 0 0 8px;
+    border-radius: $default-radius 0 0 $default-radius;
 
     img {
       position: absolute;
@@ -73,9 +73,9 @@
 
     &--title {
       color: $theme-ui-colors-titleColor;
-      font-size: 16px;
+      font-size: $font-size-normal;
       margin: 0;
-      margin-left: 24px;
+      margin-left: $size-space-6;
     }
   }
 }

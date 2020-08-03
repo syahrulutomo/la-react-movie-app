@@ -95,7 +95,6 @@ const HomeView = memo((props) => {
   }, [mappedTechEvents, categories]);
 
   useEffect(() => {
-    console.log('Mapped Categories');
     if (mappedCategories.length === 0) {
       if (categories.length > 0) {
         mapToCategoryList(categories, setMappedCategories);
