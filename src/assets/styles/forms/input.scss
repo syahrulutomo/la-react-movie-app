@@ -1,5 +1,6 @@
 #public-search-event {
   border: 1px solid $color-gray-5;
+  border-bottom: none;
   background-color: $color-white;
   background-repeat: no-repeat;
   background-position: 10px 10px;
@@ -9,15 +10,14 @@
   width: 100%;
   box-sizing: border-box;
   padding: $space-half $space $space-half $size-space-9;
-  height: $font-line-height-section-title;
+  height: 48px;
   font-weight: $font-weight-regular;
   font-size: $font-size-normal;
-  padding-top: 10px;
-  padding-bottom: 10px;
 
   @media (max-width: 767px) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom: none;
   }
 
   &:focus {
@@ -49,12 +49,10 @@
   border: 1px solid $color-gray-5;
   border-radius: $default-radius;
   color: $color-gray-7;
-  padding: $space-half $space $space-half 38px;
+  padding: $space-half $space $space-half $size-space-9;
   height: 48px;
   font-weight: 500;
-  font-size: $font-size-normal;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: $font-size-small;
 
   @media (max-width: 767px) {
     border-top-left-radius: 0;

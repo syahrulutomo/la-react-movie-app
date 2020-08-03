@@ -43,23 +43,33 @@
 
 .join-btn {
   box-sizing: border-box;
-  text-align: center;
-  line-height: inherit;
-  text-decoration: none;
-  font-size: $font-size-normal;
-  color: $theme-ui-colors-white;
-  fill: $theme-ui-colors-white;
-  background-color: $theme-ui-colors-peach;
-  border-radius: $default-radius;
-  border-color: $theme-ui-colors-peach;
-  padding-left: $space-and-half;
-  padding-right: $space-and-half;
-  padding-top: $space;
-  padding-bottom: $space;
-  margin-top: $space-and-half;
-  font-weight: 400;
-  letter-spacing: 1px;
-  z-index: 99;
+    margin: 0;
+    min-width: 0;
+    appearance: none;
+    display: inline-block;
+    text-align: center;
+    line-height: inherit;
+    text-decoration: none;
+    font-size: inherit;
+    padding-left: $size-space-3;
+    padding-right: $size-space-3;
+    padding-top: $space-half;
+    padding-bottom: $space-half;
+    color: $theme-ui-colors-white;
+    background-color: $theme-ui-colors-primary;
+    border: 0;
+    border-radius: $space;
+    border-radius: $space-half;
+    cursor: pointer;
+    color: $theme-ui-colors-white;
+    fill: $theme-ui-colors-white;
+    background-color: $theme-ui-colors-peach;
+    border-color: $theme-ui-colors-peach;
+    padding-left: $space-and-half;
+    padding-right: $space-and-half;
+    padding-top: $space;
+    padding-bottom: $space;
+    margin-top: $space;
 
   &:hover {
     opacity: .9;
