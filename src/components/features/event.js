@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getImage } from '@/utilities/firebase';
 import { connect } from 'react-redux';
 import { ThumbnailLoader, TextLoader } from '@/components/loaders';
-import AttendeeList from './attendee-list';
+import { AttendeeList } from './attendee-list';
 
 const Event = memo((props) => {
   const {

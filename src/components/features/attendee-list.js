@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Attendee from './attendee';
 
-const AttendeeList = (props) => {
+export const AttendeeList = (props) => {
   const { attendees } = props;
 
   let mappedAttendees = attendees.map((a) => {
@@ -26,5 +26,3 @@ const AttendeeList = (props) => {
 AttendeeList.propTypes = {
   attendees: PropTypes.array.isRequired,
 };
-
-export default AttendeeList;

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, memo } from 'react';
 import {
-  PublicBanner, LayoutDefault, ContainerDefault, PartialPublicHeader,
+  PublicBanner, LayoutDefault, ContainerDefault, PartialPublicHeader, PublicEventList, CategoryList, Category,
 } from '@/components';
 import Event from '@/components/features/event';
 import PublicSearchBar from '@/components/features/public-search-bar';
-import PublicEventList from '@/components/features/public-event-list';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchNearestEventList } from '@/services/redux/actions/event';
@@ -19,6 +18,7 @@ const HomeView = memo((props) => {
   const [mappedTechEvents, setMappedTechEvents] = useState([]);
   const [mappedFilmEvents, setMappedFilmEvents] = useState([]);
   const [mappedNearestEvents, setMappedNearestEvents] = useState([]);
+  const [mappedCategories, setMappedCategories] = useState([]);
 
   const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -32,7 +32,7 @@ const HomeView = memo((props) => {
     onFetchCategoryList();
   }, []);
 
-  const mapToJSX = (data, setter) => {
+  const mapToEventList = (data, setter) => {
     if (data.length > 0) {
       const evts = data.map((e) => {
         const formattedDate = moment(e.date).format('MMM DD');
@@ -55,15 +55,32 @@ const HomeView = memo((props) => {
     }
   };
 
+  const mapToCategoryList = (data, setter) => {
+    if (data.length > 0) {
+      const c = data.map((e) => {
+        return (
+          <Category
+            key={e._id}
+            id={e._id}
+            thumbnail={e.photo}
+            alt={e.name}
+            title={e.name}
+          />
+        );
+      });
+      setter(c);
+    }
+  };
+
   useEffect(() => {
-    mapToJSX(nearestEvents, setMappedNearestEvents);
+    mapToEventList(nearestEvents, setMappedNearestEvents);
   }, [nearestEvents]);
 
   useEffect(() => {
     if (mappedTechEvents.length === 0) {
       if (categories.length > 0) {
         const t = categories.find((c) => c.name === 'Tech').events;
-        mapToJSX(t, setMappedTechEvents);
+        mapToEventList(t, setMappedTechEvents);
       }
     }
   }, [mappedTechEvents, categories]);
@@ -72,10 +89,19 @@ const HomeView = memo((props) => {
     if (mappedTechEvents.length === 0) {
       if (categories.length > 0) {
         const f = categories.find((c) => c.name === 'Film').events;
-        mapToJSX(f, setMappedFilmEvents);
+        mapToEventList(f, setMappedFilmEvents);
       }
     }
   }, [mappedTechEvents, categories]);
+
+  useEffect(() => {
+    console.log('Mapped Categories');
+    if (mappedCategories.length === 0) {
+      if (categories.length > 0) {
+        mapToCategoryList(categories, setMappedCategories);
+      }
+    }
+  }, [mappedCategories, categories]);
 
   const city = selectedCity._id !== undefined ? `Event near ${selectedCity.name}, ${selectedCity.countryAbbr} ` : 'Event near you';
 
@@ -100,6 +126,7 @@ const HomeView = memo((props) => {
             ? <PublicEventList title="Film" events={mappedFilmEvents} />
             : ''
         }
+        <CategoryList categories={mappedCategories} title="Browse events by category" />
       </ContainerDefault>
     </LayoutDefault>
   );

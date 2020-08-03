@@ -4,7 +4,7 @@ import nextIcon from '@/assets/images/keyboard_arrow_right-black-18dp.svg';
 import prevIcon from '@/assets/images/keyboard_arrow_left-black-18dp.svg';
 import { SliderButton } from './slider-button';
 
-const PublicEventList = memo((props) => {
+export const PublicEventList = memo((props) => {
   const {
     events, title,
   } = props;
@@ -50,5 +50,3 @@ PublicEventList.propTypes = {
   events: PropTypes.array,
   title: PropTypes.string,
 };
-
-export default PublicEventList;
