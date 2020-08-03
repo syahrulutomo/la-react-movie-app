@@ -58,15 +58,25 @@ const PublicSearchCity = (props) => {
     getPosition()
       .then(() => {
         if (position.latitude && position.longitude) {
-          onFindNearestCity(position.latitude, position.longitude);
+          const ac = new AbortController();
+          try {
+            onFindNearestCity(position.latitude, position.longitude);
+          } catch (err) {
+            if (err) ac.abort();
+          }
         }
       });
   }, [position.latitude, position.longitude]);
 
   useEffect(() => {
     if (nearest.length > 0) {
+      const ac = new AbortController();
       setCity(`${nearest[0].name}, ${nearest[0].countryAbbr}`);
-      onSelectCity(nearest[0]);
+      try {
+        onSelectCity(nearest[0]);
+      } catch (err) {
+        if (err) ac.abort();
+      }
     }
   }, [nearest]);
 

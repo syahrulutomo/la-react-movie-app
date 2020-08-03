@@ -27,7 +27,7 @@ const Event = memo((props) => {
       <div className="app-event-thumbnail">
         <img src={imageUrl} loading="lazy" alt={alt} onLoad={() => setDidLoad(true)} />
         {
-          !didLoad
+          !didLoad || loading
             ? <ThumbnailLoader /> : ''
         }
       </div>
