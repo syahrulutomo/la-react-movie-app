@@ -19,8 +19,6 @@
     "build": "cross-env NODE_ENV='dev' && rm -rf dist && webpack --mode=development",
     "prod": "webpack --config webpack.prod.js -p",
     "lint": "./node_modules/.bin/eslint source/",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "test": "jest"
   },
   "dependencies": {
@@ -31,6 +29,7 @@
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-datepicker": "^4.2.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",

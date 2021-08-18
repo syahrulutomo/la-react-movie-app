@@ -8,6 +8,7 @@ export function Routes() {
     <BrowserRouter basename="/">
       <Switch>
         <PublicRoute exact path="/" component={HomeView} />
+        {/* <PublicRoute exact path="/find" component={FindView} /> */}
       </Switch>
     </BrowserRouter>
   );

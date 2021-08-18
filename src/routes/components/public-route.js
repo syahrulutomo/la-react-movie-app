@@ -11,6 +11,6 @@ export function PublicRoute({ component: Component, ...rest }) {
   );
 }
 
-PublicRoute.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
-};
+// PublicRoute.propTypes = {
+//   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+// };

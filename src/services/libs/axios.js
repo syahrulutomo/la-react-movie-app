@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: process.env.API,
-  mode: 'no-cors'
+  mode: 'no-cors',
 });
 
 export default instance;

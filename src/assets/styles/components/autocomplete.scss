@@ -1,0 +1,25 @@
+.autocomplete {
+  margin-bottom: 0;
+  margin-top: -12px;
+  margin-left: auto;
+  margin-right: 24px;
+  max-width: 300px;
+  box-shadow: 0 2px 15px 0 rgba(32,32,32,10%);
+  border-radius: 6px;
+  position: absolute;
+  z-index: 10;
+  right: 10px;
+
+  ul {
+    padding: 0 8px;
+    background-color: #FFF;
+    border-radius: 6px;
+    margin: 0 auto;
+    max-width: 300px;
+    list-style: none;
+  }
+
+  li {
+    cursor: pointer;
+  }
+}

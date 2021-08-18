@@ -1,103 +1,23 @@
-#public-search-event {
-  border: 1px solid $color-gray-5;
-  background-color: $color-white;
-  background-repeat: no-repeat;
-  background-position: 10px 10px;
-  background-size: 22px;
-  border-radius: 8px;
-  color: $color-gray-7;
-  width: 100%;
+#search-input {
+  border: none;
+  border-radius: 2px;
+  padding: 6px 0;
   box-sizing: border-box;
-  padding: $space-half $space $space-half $size-space-9;
-  height: 48px;
-  font-weight: $font-weight-regular;
-  font-size: $font-size-normal;
-
-  @media (max-width: 767px) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom: none;
-  }
-
-  &:focus {
-    outline: none;
-    border: 1px solid $color-viridian;
-  }
-
-  &:hover {
-    border: 1px solid $color-viridian;
-    outline: none;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 55%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: none;
-  }
+  font-size: 14px;
+  outline: none;
+  width: 0;
+  cursor: pointer;
 }
 
-#public-search-city {
-  box-sizing: border-box;
-  width: 100%;
-  background-color: $color-white;
-  background-repeat: no-repeat;
-  background-position: 10px 10px;
-  background-size: 22px;
-  border-top: none;
-  border: 1px solid $color-gray-5;
-  border-radius: $default-radius;
-  color: $color-gray-7;
-  padding: $space-half $space $space-half $size-space-9;
-  height: 48px;
+#search-input.active {
+  width: 150px;
+  padding: 6px 12px;
+  transition: width 1s, padding .25s ease;
+  color: #11052C;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  font-size: $font-size-small;
 
-  @media (max-width: 767px) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
-  &:focus {
-    outline: none;
-    border: 1px solid $color-viridian;
-    border-top: 1px solid $color-viridian;
-  }
-
-  &:hover {
-    border-top: 1px solid $color-viridian;
-    outline: none;
-    border: 1px solid $color-viridian;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 90%;
-    border-top: 1px solid $color-gray-5;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    margin-right: 20px;
-  }
-}
-
-.public-search-city-popup {
-  .list {
-    background-color: rgb(255, 255, 255);
-    display: block;
-    font-size: 85%;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.25);
-    border-image: initial;
-    border-radius: $default-radius;
-    list-style: none;
-    padding: 0px;
-
-    &-item {
-      align-items: end;
-      color: rgb(33, 33, 33);
-      display: flex;
-      min-height: 20px;
-      padding: $size-space-3 $space $size-space-3 $size-space-5;
-    }
+  @media only screen and (min-width: 720px) {
+    width: 200px;
   }
 }

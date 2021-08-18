@@ -1,29 +1,67 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import logo from '@/assets/images/meetup-vector-logo.svg';
-import { routes } from '@/constants';
+import React, { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { routes } from '@/constants'
+import SearchIcon from '@/assets/images/search.svg'
+import Input from '@/components/forms/input-search'
+import Autocomplete from '@/components/base/autocomplete'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { fetchSearchList, showAutoComplete } from '@/services/redux/actions/search'
 
-export const PartialHeader = () => {
+const PartialHeader = (props) => {
+  const { title, searched, onFetchSearchList, loading, searchText, movies, onShowAutoComplete } = props
+
+  const [ isOpen, setIsOpen ] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const handleClickHeader = () => {
+    onShowAutoComplete(false)
+  }
+
   return (
-    <header id="app-header">
-      <div className="app-header--logo">
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
+    <header className="header" onClick={handleClickHeader}>
+      <div className="header__container">
+        <div className="header__logo">
+          <Link to={routes.home}>
+            <h3 className="logo">{title}</h3>
+          </Link>
+        </div>
+        <div className="header__search">
+          <Input isActive={isOpen}  class="search-input" id="search-input" placeholder="Search anything" type="text" />
+          <img src={SearchIcon} onClick={handleClick} />
+        </div>
       </div>
-      <nav className="app-header--navigation">
-        <li>
-          <NavLink exact to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={routes.login}>Login</NavLink>
-        </li>
-        <li>
-          <NavLink to="/register">Register</NavLink>
-        </li>
-      </nav>
+      <Autocomplete list={movies} text={searchText} />
     </header>
-  );
-};
+  )
+}
+
+PartialHeader.propTypes = {
+  searched: PropTypes.array,
+  onFetchSearchList: PropTypes.func,
+  loading: PropTypes.bool,
+  searchText: PropTypes.string,
+  movies: PropTypes.array,
+  onShowAutoComplete: PropTypes.func
+}
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movie.movies,
+    searchText: state.search.searchText,
+    searched: state.search.searched,
+    loading: state.search.loading,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchSearchList: (param) => dispatch(fetchSearchList(param.text, param.movie)),
+    onShowAutoComplete: (boolean) => dispatch(showAutoComplete(boolean))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PartialHeader)
