@@ -3,14 +3,14 @@
   max-width: 250px;
   height: 40px;
   border-radius: 30px;
-  border: 2px solid #000;
+  border: 2px solid $color-super-black;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
   padding: 12px 16px;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-roboto;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -18,7 +18,7 @@
   line-height: 1.17;
   letter-spacing: normal;
   text-align: center;
-  color: #000;
+  color: $color-super-black;
   transition: all .2s ease-in;
   outline: none;
   position: relative;
@@ -27,7 +27,8 @@
   margin-top: 24px;
 
   &:hover {
-    color: #FFF;
-    background-color: #000;
+    color: $color-white;
+    background-color: $color-super-black;
+    cursor: pointer;
   }
 }

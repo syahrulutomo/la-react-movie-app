@@ -40,6 +40,7 @@ const PartialHeader = (props) => {
 }
 
 PartialHeader.propTypes = {
+  title: PropTypes.string,
   searched: PropTypes.array,
   onFetchSearchList: PropTypes.func,
   loading: PropTypes.bool,

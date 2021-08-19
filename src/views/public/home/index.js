@@ -55,7 +55,7 @@ const HomeView = memo((props) => {
     if(startDate && finishDate && movies.length > 0) {
       onFilterListByDate({start: startDate, finish: finishDate, list: movies })
     } else if(!startDate && !finishDate) {
-      setLoadeMovies(movies)
+      setLoadeMovies(movies.slice(0, 8))
     }
   }, [startDate, finishDate]);
 
@@ -98,7 +98,10 @@ HomeView.propTypes = {
   onFetchMovieList: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   searched: PropTypes.array,
-  searchedText: PropTypes.string
+  searchedText: PropTypes.string,
+  startDate: PropTypes.any, 
+  finishDate: PropTypes.any, 
+  onFilterListByDate: PropTypes.func
 }
 
 const mapStateToProps = (state) => {

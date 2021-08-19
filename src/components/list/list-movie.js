@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import axios from '@/services/libs/axios'
+import React from 'react'
 import Card from '@/components/base/card'
 import { showAutoComplete } from '@/services/redux/actions/search'
 import PropTypes from 'prop-types'
@@ -27,6 +26,7 @@ const ListMovie = (props) => {
 }
 
 ListMovie.propTypes = {
+  list: PropTypes.array,
   onShowAutoComplete: PropTypes.func
 }
 

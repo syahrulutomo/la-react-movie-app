@@ -58,8 +58,8 @@
     margin: 0;
     left: 16px;
     z-index: 10;
-    color: #FFF;
-    font-family: 'Roboto', sans-serif;
+    color: $color-white;
+    font-family: $font-roboto;
     font-weight: 500;
     font-size: 24px;
     word-break: break-all;
@@ -72,8 +72,8 @@
     margin: 0;
     right: 16px;
     z-index: 10;
-    color: #FFE459;
-    font-family: 'Roboto', sans-serif;
+    color: $color-yellow;
+    font-family: $font-roboto;
     font-weight: 500;
     font-size: 16px;
     word-break: break-all;

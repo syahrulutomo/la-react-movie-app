@@ -5,9 +5,9 @@
   width: 100%;
   height: 100%;
   min-height: 250px;
-  border-radius: $space-half;
-  margin-bottom: $space;
-  background-color: $theme-ui-colors-gray3;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background-color: $color-gray;
   border-radius: 6px;
 
   &::after {
@@ -42,8 +42,8 @@
   height: inherit;
   width: 100%;
   height: 18px;
-  margin: $space-half 0;
-  background-color: $theme-ui-colors-gray3;
+  margin: 4px 0;
+  background-color: $color-gray;
 
   &::after {
     position: absolute;
@@ -76,12 +76,12 @@
   display: inline-block;
   width: 30px;
   height: 30px;
-  border: 2px solid white;
+  border: 2px solid $color-white;
   border-radius: 100%;
   margin-left: -8px;
   z-index: -2;
   box-sizing: border-box;
-  background-color: $theme-ui-colors-gray3;
+  background-color: $color-gray;
 
   &::after {
     position: absolute;

@@ -41,7 +41,8 @@ Input.propTypes = {
   searched: PropTypes.array,
   onFetchSearchList: PropTypes.func.isRequired,
   loading: PropTypes.bool,
-  searchText: PropTypes.string
+  searchText: PropTypes.string,
+  movies: PropTypes.array
 };
 
 const mapStateToProps = (state) => {

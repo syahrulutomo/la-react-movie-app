@@ -27,8 +27,14 @@ const CustomDatepicker = (props) => {
 }
 
 CustomDatepicker.propTypes = {
+  selected: PropTypes.any,
+  isClearable: PropTypes.bool,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
   startDate: PropTypes.any,
   finishDate: PropTypes.any,
+  onSetStartDate: PropTypes.func,
+  onSetFinishDate: PropTypes.func
 }
 
 const mapStateToProps = (state) => {

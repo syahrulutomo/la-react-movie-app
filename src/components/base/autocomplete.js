@@ -5,23 +5,16 @@ import PropTypes from 'prop-types'
 
 const Autocomplete = (props) => {
   const { list, text, searchText, onSetSearchText, onFetchSearchList, movies, onShowAutoComplete, showAutoComplete } = props
-  const [isShow, setIsShow] = useState(true)
   
   const handleClick = (e) => {
-    setIsShow(false)
     onShowAutoComplete(false)
     onSetSearchText(e.target.dataset.title)
     onFetchSearchList({text: searchText, movie: movies})
   }
 
   useEffect(() => {
-    setIsShow(true)
     onShowAutoComplete(true)
   },[searchText])
-
-  useEffect(() => {
-    setIsShow(showAutoComplete)
-  },[showAutoComplete])
 
   return (
     showAutoComplete ? (
@@ -36,6 +29,17 @@ const Autocomplete = (props) => {
       </div>
     ) : ''
   )
+}
+
+Autocomplete.propTypes = {
+  list: PropTypes.array,
+  text: PropTypes.string,
+  searchText: PropTypes.string,
+  onSetSearchText: PropTypes.func,
+  onFetchSearchList: PropTypes.func,
+  movies: PropTypes.array,
+  onShowAutoComplete: PropTypes.func,
+  showAutoComplete: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {

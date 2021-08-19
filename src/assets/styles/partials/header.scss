@@ -1,7 +1,7 @@
 @import '../mixins/index.scss';
 
 .header {
-  background-color: #3D087B;
+  background-color: $color-purple;
   
   &__container {
     width: 100%;
@@ -15,8 +15,8 @@
   }
 
   .logo {
-    font-family: 'Recursive', sans-serif;
-    color: #FFFFFF;
+    font-family: $font-recursive;
+    color: $color-white;
     margin: 0;
     font-size: 24px;
   }

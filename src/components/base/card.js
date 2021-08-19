@@ -3,6 +3,7 @@ import moment from 'moment'
 import { ThumbnailLoader } from '@/components/loaders'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const Card = (props) => {
   const { id, thumbnail, title, time, loading, movies } = props
@@ -13,8 +14,10 @@ const Card = (props) => {
 
   return (
     <div key={id} className="list-movie__card">
-      <div className="list-movie__card__thumbnail"  >
-        <img src={thumbnail} loading="lazy" alt={title} onLoad={() => setDidLoad(true)} />
+      <div className="list-movie__card__thumbnail" >
+        <Link to={{pathname: `/details/${id}`}}>
+          <img src={thumbnail} loading="lazy" alt={title} onLoad={() => setDidLoad(true)} />
+        </Link>
       </div>
       {
         !didLoad ? <ThumbnailLoader/> : ''
